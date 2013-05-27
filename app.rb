@@ -14,3 +14,7 @@ get '/users' do
     user.name || 'unknown'
   end.join(', ')
 end
+
+get '/users/:id' do
+  User.get(params[:id]).name || 'unknown'
+end
