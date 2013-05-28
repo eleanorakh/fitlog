@@ -3,4 +3,6 @@ class User
 
   property :id, Serial
   property :name, String
+
+  has n, :workouts
 end

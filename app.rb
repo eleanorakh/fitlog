@@ -6,6 +6,7 @@ require 'data_mapper'
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 
 require 'user'
+require 'workout'
 
 DataMapper.finalize.auto_upgrade!
 
