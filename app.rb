@@ -22,9 +22,8 @@ end
 
 get '/users/:user_id/workouts' do
   user = User.get(params[:user_id])
-  user.workouts.map do |workout|
-    workout.exercise_type
-  end.join ', '
+  @workouts = user.workouts
+  erb :'workouts/index'
 end
 
 get '/users/:user_id/workouts/:id' do

@@ -1,0 +1,7 @@
+<ul>
+  <% @workouts.each do |workout| %>
+    <li>
+      <%= workout.exercise_type || 'unknown' %>
+    </li>
+  <% end %>
+</ul>
