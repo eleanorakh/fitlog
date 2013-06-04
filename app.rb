@@ -27,5 +27,6 @@ get '/users/:user_id/workouts' do
 end
 
 get '/users/:user_id/workouts/:id' do
-  Workout.get(params[:id]).exercise_type
+  @workout = Workout.get(params[:id])
+  erb :'workouts/show'
 end
