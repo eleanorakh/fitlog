@@ -27,6 +27,6 @@ get '/users/:user_id/workouts' do
 end
 
 get '/users/:user_id/workouts/:id' do
-  @workout = Workout.get(params[:id])
+  @workout = User.get(params[:user_id]).workouts.get(params[:id])
   erb :'workouts/show'
 end
