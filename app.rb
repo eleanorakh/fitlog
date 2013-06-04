@@ -16,7 +16,8 @@ get '/users' do
 end
 
 get '/users/:id' do
-  User.get(params[:id]).name || 'unknown'
+  @user = User.get(params[:id])
+  erb :show
 end
 
 get '/users/:user_id/workouts' do
