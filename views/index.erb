@@ -1,0 +1,7 @@
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.name || 'unknown' %>
+    </li>
+  <% end %>
+</ul>

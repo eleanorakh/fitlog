@@ -11,9 +11,8 @@ require 'workout'
 DataMapper.finalize.auto_upgrade!
 
 get '/users' do
-  User.all.map do |user|
-    user.name || 'unknown'
-  end.join(', ')
+  @users = User.all
+  erb :index
 end
 
 get '/users/:id' do
