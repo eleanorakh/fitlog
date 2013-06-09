@@ -3,7 +3,7 @@ $: << 'lib'
 require 'sinatra'
 require 'data_mapper'
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/#{settings.environment}.db")
 
 require 'user'
 require 'workout'
