@@ -27,6 +27,15 @@ get '/users/:user_id/workouts' do
 end
 
 get '/users/:user_id/workouts/:id' do
-  @workout = User.get(params[:user_id]).workouts.get(params[:id])
-  erb :'workouts/show'
+  user = User.get(params[:user_id])
+  if user.nil?
+    raise Sinatra::NotFound
+  else
+    @workout = user.workouts.get(params[:id])
+    if @workout.nil?
+      raise Sinatra::NotFound
+    else
+      erb :'workouts/show'
+    end
+  end
 end
