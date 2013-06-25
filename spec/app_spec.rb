@@ -23,8 +23,10 @@ describe 'fitlog' do
         User.new(:name => 'Harry').save
         get '/users'
         expect(last_response).to be_ok
-        expect(last_response.body).to match /Ron/
-        expect(last_response.body).to match /Harry/
+        names = Nokogiri::HTML(last_response.body).css('html body ul li').map do |list_item|
+          list_item.text.strip
+        end
+        expect(names).to match_array ['Ron', 'Harry']
       end
     end
   end
