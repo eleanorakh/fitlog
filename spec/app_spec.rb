@@ -37,6 +37,16 @@ describe 'fitlog' do
       end
     end
   end
+
+  describe 'user show' do
+    it 'displays the user' do
+      ron = User.new(:name => 'Ron')
+      ron.save
+      get "/users/#{ron.id}"
+      expect(last_response).to be_ok
+      expect(last_response.body).to match /Ron/
+    end
+  end
 end
 
 def names_from_html
