@@ -5,4 +5,6 @@ class User
   property :name, String
 
   has n, :workouts
+
+  validates_presence_of :name
 end
