@@ -38,6 +38,15 @@ describe 'fitlog' do
         visit '/users'
         expect(names_from_html).to match_array ['Ron', 'Harry']
       end
+
+      it 'allows navigation to the show page' do
+        ron = User.new(:name => 'Ron')
+        ron.save
+        visit '/users'
+        expect(names_from_html).to match_array ['Ron']
+        click_link 'Ron'
+        expect(current_path).to eq "/users/#{ron.id}"
+      end
     end
   end
 
