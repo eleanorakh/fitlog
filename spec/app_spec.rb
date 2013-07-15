@@ -58,6 +58,20 @@ describe 'fitlog' do
       expect(page).to have_content 'Ron'
     end
   end
+
+  describe 'workouts index' do
+    it 'displays workouts for the user' do
+      harry = User.new(:name => 'Harry')
+      harry.save
+      Workout.new(:user_id => harry.id, :exercise_type => 'Running').save
+      ron = User.new(:name => 'Ron')
+      ron.save
+      Workout.new(:user_id => ron.id, :exercise_type => 'Swimming')
+      visit "/users/#{harry.id}/workouts"
+      expect(page).to have_content 'Running'
+      expect(page).to have_no_content 'Swimming'
+    end
+  end
 end
 
 def names_from_html
